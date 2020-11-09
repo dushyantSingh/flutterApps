@@ -1,0 +1,20 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "json_annotation",
+      "rootUri": "file:///Users/dushyant/.pub-cache/hosted/pub.dartlang.org/json_annotation-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "config",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    }
+  ],
+  "generated": "2020-11-04T05:53:26.518701Z",
+  "generator": "pub",
+  "generatorVersion": "2.10.3"
+}
