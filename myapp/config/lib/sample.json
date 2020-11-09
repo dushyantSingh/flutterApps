@@ -1,0 +1,890 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This API gets portfolio and funds information meant to be shown on a mobile app",
+        "version": "0.1",
+        "title": "PMS Mobile API"
+    },
+    "host": "localhost:8084",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "portfolio-summary-controller",
+            "description": "Portfolio Summary Controller"
+        }
+    ],
+    "paths": {
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio value summary",
+                "operationId": "retrieveMarketPortfolioValueUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PortfolioAllocationSummary"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/allocations": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio allocation details",
+                "operationId": "retrieveMarketPortfolioAllocationsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Page«AssetAllocation»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/balancesheet": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio balance sheet",
+                "operationId": "retrieveMarketPortfolioBalanceSheetUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BalanceSheet"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/gainloss": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio gain and loss statement",
+                "operationId": "retrieveMarketPortfolioGainAndLossUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Page«GainAndLossItem»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/income": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio income statement",
+                "operationId": "retrieveMarketPortfolioIncomeStatementUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/IncomeStatement"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/performance": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio performance analysis",
+                "operationId": "retrieveMarketPortfolioPerformanceUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "benchmarkCode",
+                        "in": "query",
+                        "description": "benchmarkCode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PerformanceStatement"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/markets/{market}/groups/{portfolioGroup}/investors/{investorId}/portfolios/{portfolioId}/transfers": {
+            "get": {
+                "tags": [
+                    "market"
+                ],
+                "summary": "Portfolio capital transfers",
+                "operationId": "retrieveMarketPortfolioFundTransfersUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": false,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "investorId",
+                        "in": "path",
+                        "description": "investorId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "market",
+                        "in": "path",
+                        "description": "market",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "portfolioGroup",
+                        "in": "path",
+                        "description": "portfolioGroup",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "portfolioId",
+                        "in": "path",
+                        "description": "portfolioId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Page«CapitalTransaction»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "AssetAllocation": {
+            "type": "object",
+            "properties": {
+                "assetClass": {
+                    "type": "string",
+                    "enum": [
+                        "EQUITIES",
+                        "BONDS",
+                        "COMMODITIES",
+                        "DERIVATIVES",
+                        "MUTUAL_FUND",
+                        "REAL_ESTATE",
+                        "CASH",
+                        "OTHER"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "AssetAllocation"
+        },
+        "BalanceSheet": {
+            "type": "object",
+            "properties": {
+                "generatedTimestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lineItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BalanceSheetItem"
+                    }
+                },
+                "totalAmount": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "BalanceSheet"
+        },
+        "BalanceSheetItem": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/Money"
+                },
+                "categoryType": {
+                    "type": "string",
+                    "enum": [
+                        "ASSET",
+                        "LIABILITY",
+                        "EQUITY"
+                    ]
+                },
+                "code": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "title": "BalanceSheetItem"
+        },
+        "CapitalTransaction": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/Money"
+                },
+                "from": {
+                    "$ref": "#/definitions/CapitalTransactionParty"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "to": {
+                    "$ref": "#/definitions/CapitalTransactionParty"
+                },
+                "transactionDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "TOP_UP",
+                        "SWITCH_OUT",
+                        "SWITCH_IN",
+                        "ADDITIONAL_INFLOW",
+                        "DIVIDEND",
+                        "PARTIAL_REDEMPTION",
+                        "WITHDRAWAL",
+                        "STOCK_TRANSFER_IN",
+                        "STOCK_TRANSFER_OUT",
+                        "UNKNOWN"
+                    ]
+                }
+            },
+            "title": "CapitalTransaction"
+        },
+        "CapitalTransactionParty": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "CapitalTransactionParty"
+        },
+        "GainAndLossItem": {
+            "type": "object",
+            "properties": {
+                "allocation": {
+                    "$ref": "#/definitions/AssetAllocation"
+                },
+                "longTermGainLoss": {
+                    "$ref": "#/definitions/Money"
+                },
+                "shortTermGainLoss": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "GainAndLossItem"
+        },
+        "IncomeStatement": {
+            "type": "object",
+            "properties": {
+                "generatedTimestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lineItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IncomeStatementLineItem"
+                    }
+                },
+                "netIncome": {
+                    "$ref": "#/definitions/Money"
+                },
+                "totalExpenses": {
+                    "$ref": "#/definitions/Money"
+                },
+                "totalIncome": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "IncomeStatement"
+        },
+        "IncomeStatementLineItem": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/Money"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "INCOME",
+                        "EXPENDITURE"
+                    ]
+                }
+            },
+            "title": "IncomeStatementLineItem"
+        },
+        "Money": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string"
+                }
+            },
+            "title": "Money"
+        },
+        "Page«AssetAllocation»": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AssetAllocation"
+                    }
+                },
+                "pageNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "perPage": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Page«AssetAllocation»"
+        },
+        "Page«CapitalTransaction»": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CapitalTransaction"
+                    }
+                },
+                "pageNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "perPage": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Page«CapitalTransaction»"
+        },
+        "Page«GainAndLossItem»": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GainAndLossItem"
+                    }
+                },
+                "pageNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "perPage": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Page«GainAndLossItem»"
+        },
+        "PerformanceStatement": {
+            "type": "object",
+            "properties": {
+                "generatedTimestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "timeFrames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PerformanceTimeFrame"
+                    }
+                }
+            },
+            "title": "PerformanceStatement"
+        },
+        "PerformanceTimeFrame": {
+            "type": "object",
+            "properties": {
+                "benchMarkIRR": {
+                    "type": "number"
+                },
+                "benchmarkCode": {
+                    "type": "string"
+                },
+                "portfolioIRR": {
+                    "type": "number"
+                },
+                "portfolioValue": {
+                    "$ref": "#/definitions/Money"
+                },
+                "timeFrameType": {
+                    "type": "string",
+                    "enum": [
+                        "SINCE_INCEPTION",
+                        "ONE_YEAR",
+                        "DAYS_180",
+                        "DAYS_90",
+                        "DAYS_30",
+                        "YTD",
+                        "MTD",
+                        "WTD"
+                    ]
+                }
+            },
+            "title": "PerformanceTimeFrame"
+        },
+        "Portfolio": {
+            "type": "object",
+            "properties": {
+                "calculatedTimestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "inceptionDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "marketValue": {
+                    "$ref": "#/definitions/Money"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "netValue": {
+                    "$ref": "#/definitions/Money"
+                },
+                "paidUpValue": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "Portfolio"
+        },
+        "PortfolioAllocationSummary": {
+            "type": "object",
+            "properties": {
+                "allocations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "number"
+                    }
+                },
+                "portfolio": {
+                    "$ref": "#/definitions/Portfolio"
+                },
+                "totalValue": {
+                    "$ref": "#/definitions/Money"
+                }
+            },
+            "title": "PortfolioAllocationSummary"
+        }
+    }
+}
